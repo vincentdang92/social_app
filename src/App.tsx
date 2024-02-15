@@ -1,6 +1,8 @@
+import './globals.css';
+
 const App = () => {
   return (
-    <div>App</div>
+    <div className="underline text-bold">App 11</div>
   )
 }
 

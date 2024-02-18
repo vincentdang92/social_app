@@ -21,6 +21,7 @@ const SignupForm = () => {
     resolver: zodResolver(SignupValidation),
     defaultValues: {
       username: "",
+      
     },
   })
  

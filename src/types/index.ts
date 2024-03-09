@@ -32,12 +32,12 @@ export type INavLink = {
   };
   
   export type IUser = {
-    id: string;
+    accountId: string;
     name: string;
-    username: string;
+    username?: string;
     email: string;
-    imageUrl: string;
-    bio: string;
+    imageUrl?: URL;
+    bio?: string;
   };
   
   export type INewUser = {
@@ -45,4 +45,12 @@ export type INavLink = {
     email: string;
     username: string;
     password: string;
+  };
+  export type IContextType = {
+    user: IUser;
+    isLoading: boolean;
+    setUser: React.Dispatch<React.SetStateAction<IUser>>;
+    Authenticated: boolean;
+    setAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+    checkAuthUser: () => Promise<boolean>;
   };

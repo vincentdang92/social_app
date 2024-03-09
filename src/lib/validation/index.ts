@@ -6,3 +6,7 @@ export const SignupValidation = z.object({
     email: z.string().min(2,{message: "Too short"}).max(50),
     password: z.string().min(2,{}).max(30,{})
 })
+export const SigninValidation = z.object({
+    email: z.string().min(2,{message: "Too short"}).max(50),
+    password: z.string().min(2,{}).max(30,{})
+})

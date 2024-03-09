@@ -59,14 +59,20 @@ export async function getCurrentUser(){
         const currentUser = await databases.listDocuments(
             appwriteConfig.databaseId,
             appwriteConfig.userCollectionId,
-            [
-                
-            ]
+            [Query.notEqual("accountId", ["65ec173b422bbf660215"])]
         );
         console.log(currentUser);
         if(!currentUser) throw Error;
         //const user = currentUser.filter()
         return currentUser.documents[0];
+    } catch (error) {
+        console.log(error);
+    }
+}
+export async function signOutAccount() {
+    try {
+        const session = await account.deleteSession('current');
+        return session;
     } catch (error) {
         console.log(error);
     }

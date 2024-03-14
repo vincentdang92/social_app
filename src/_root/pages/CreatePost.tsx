@@ -1,3 +1,4 @@
+import PostForm from "@/components/forms/PostForm"
 
 const CreatePost = () => {
   return (
@@ -7,7 +8,9 @@ const CreatePost = () => {
             <img src="/assets/icons/add-post.svg" alt="add post" width={36} height={36} />
             <h2 className="h3-bold md:h2-bold w-full text-left">Create Post</h2>
           </div>
+          <PostForm />
       </div>
+      
     </div>
   )
 }

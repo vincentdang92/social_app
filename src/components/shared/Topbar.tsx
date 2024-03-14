@@ -5,7 +5,11 @@ import { useSignoutAccount } from '@/lib/react-query/queriesAndMutations'
 import { useUserContext } from '@/context/AuthContext'
 
 const Topbar = () => {
-    const {user} = useUserContext();
+    const { user, checkAuthUser  } = useUserContext();
+    useEffect(() => {
+        checkAuthUser(); // This should trigger the checkAuthUser function
+    }, []);
+    
     const navigate = useNavigate();
     const {mutate: signOut, isSuccess} = useSignoutAccount();
     useEffect(()=>{
@@ -23,7 +27,7 @@ const Topbar = () => {
                     height={325}
                 />
             </Link>
-            <div className="flex gap-4">
+            <div className="flex items-center gap-4">
                 <Button variant="ghost" className="shad-btn" onClick={() => signOut()}>
                     <img 
                         src="/assets/icons/logout.svg"
@@ -33,6 +37,7 @@ const Topbar = () => {
                     <img
                         src={user.imageUrl || '/assets/icons/profile-placeholder.svg'}
                         alt={user.name || ''}
+                        className='h-8 w-8 rounded-full'
                     />
                 </Link>
             </div>

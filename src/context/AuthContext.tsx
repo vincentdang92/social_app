@@ -3,6 +3,7 @@ import { IContextType, IUser } from '@/types';
 import {createContext, useContext, useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const INITIAL_USER = {
     accountId: '',
     name: '',
@@ -29,8 +30,10 @@ const AuthProvider = ({children} : {children: React.ReactNode}) => {
     const [Authenticated, setAuthenticated] = useState(false);
     const navigate = useNavigate();
     const checkAuthUser = async () => {
+        
         try {
             const currentUser = await getCurrentUser();
+            console.log(currentUser, "Auth");
             if(currentUser){
                 setUser({
                     accountId: currentUser.$id,
@@ -66,11 +69,11 @@ const AuthProvider = ({children} : {children: React.ReactNode}) => {
     
     const value = {
         user,
-    setUser,
-    isLoading,
-    Authenticated,
-    setAuthenticated,
-    checkAuthUser,
+        setUser,
+        isLoading,
+        Authenticated,
+        setAuthenticated,
+        checkAuthUser,
     };
 
   return (
@@ -80,5 +83,5 @@ const AuthProvider = ({children} : {children: React.ReactNode}) => {
   )
 }
 
-export default AuthProvider
+export default AuthProvider;
 export const useUserContext = () => useContext(AuthContext);
